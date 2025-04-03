@@ -1,0 +1,15 @@
+{
+  "asynchronousDelivery": true,
+  "crcHost": "192.168.1.199",
+  "crcPort": 8989,
+  "federateName": "EDN_TAPS",
+  "federateType": "Catholille",
+  "federateRole": "LATE",
+  "federationName": "SEE 2024",
+  "fomDirectory": "foms",
+  "realtime": false,
+  "simulationScenarioTimeEphoc": 17131.83333333334,
+  "timeConstrained": true,
+  "timeRegulating": false,
+  "lookahead": 1000000
+}
