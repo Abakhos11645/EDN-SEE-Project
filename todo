@@ -1,6 +1,6 @@
-Add energy levels, ERRV.
-Add arm, ERRV.
-Add object weight, Object to deliver.
+Add energy levels (attribute), ERRV.
+Add arm(create an arm class , and the arm object should be an attribute to ERRV), ERRV.
+Add object weight(as an attribute), Object to deliver.
 rewrite doAction to suit our rover (ERRV.arm; objecttodeliver.weight), ERRVFederate.
 Check wrapper for unity java.
 
