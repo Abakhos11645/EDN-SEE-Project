@@ -1,0 +1,15 @@
+{
+  "asynchronousDelivery": true,
+  "crcHost": "localhost",
+  "crcPort": 8989,
+  "federateName": "ERRV",
+  "federateType": "Catholille",
+  "federateRole": "LATE",
+  "federationName": "SEE 2025",
+  "fomDirectory": "foms",
+  "realtime": false,
+  "simulationScenarioTimeEphoc": 17131.83333333334,
+  "timeConstrained": true,
+  "timeRegulating": false,
+  "lookahead": 1000000
+}
