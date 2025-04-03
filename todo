@@ -1,0 +1,6 @@
+Add energy levels, ERRV.
+Add arm, ERRV.
+Add object weight, Object to deliver.
+rewrite doAction to suit our rover (ERRV.arm; objecttodeliver.weight), ERRVFederate.
+Check wrapper for unity java.
+
