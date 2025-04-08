@@ -1,7 +1,7 @@
-Add energy levels (attribute), ERRV.
+(~Add energy levels (attribute), ERRV.
 Add arm(create an arm class , and the arm object should be an attribute to ERRV), ERRV.
 Add object weight(as an attribute), Object to deliver.
 rewrite doAction to suit our rover (add action for ERRV.arm; check objecttodeliver.weight before doing interaction), ERRVFederate.
-Connect to pRTI. 
+Connect to pRTI.~)
 Check wrapper for unity java.
 
