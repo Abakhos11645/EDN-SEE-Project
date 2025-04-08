@@ -28,8 +28,10 @@
         <interactionClass>
             <name>HLAinteractionRoot</name>
             <interactionClass>
-                <name>ERRVInteraction</name>
+                <name>EmergencyRequest</name>
                 <sharing>PublishSubscribe</sharing>
+		<transportation>HLAreliable</transportation>
+                <order>Receive</order>
                 <semantics></semantics>
             </interactionClass>
         </interactionClass>
