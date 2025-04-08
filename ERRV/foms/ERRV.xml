@@ -32,6 +32,11 @@
                 <sharing>PublishSubscribe</sharing>
 		<transportation>HLAreliable</transportation>
                 <order>Receive</order>
+		<parameter>
+                        <name>Request</name>
+                        <type>HLAunicodeString</type>
+                        <semantics>Details of the machine sending the request in the form:name,x,y,z,weight (comma separated, see Objecttoget class)</semantics>
+                </parameter>
                 <semantics></semantics>
             </interactionClass>
         </interactionClass>
