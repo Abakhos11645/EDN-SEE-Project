@@ -6,11 +6,15 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.TimeZone;
+import java.util.Random;
 
 import model.ERRV;
 import model.interactionclass.EmergencyRequest;
+import model.interactionclass.WASSERRVMessage;
 import model.Objecttoget;
+import model.Parts;
 import model.Position;
+import model.interactionclass.WASSERRVMessage;
 import siso.smackdown.frame.FrameType;
 import skf.config.Configuration;
 import skf.core.SEEAbstractFederate;
@@ -28,6 +32,7 @@ public class ERRVFederate extends SEEAbstractFederate implements Observer {
 	// DEFINITION OF THE OBJECT TO DELIVER
 	private Objecttoget objectToDeliver = null;
 	// DEFINITION OF THE LIST OF OBJECTS TO DELIVER
+	private WASSERRVMessage message = new WASSERRVMessage();
 	List<String> listOfObjectToDeliver = null;
 	private ERRV lunarRover = null;
 	private String local_settings_designator = null;
@@ -98,9 +103,12 @@ public class ERRVFederate extends SEEAbstractFederate implements Observer {
 
 			// 10. Publish MTR Interaction
 			super.publishInteraction(this.mtr);
+			super.publishInteraction(message);
 
 			try {
 				super.subscribeInteraction((Class<? extends InteractionClass>) EmergencyRequest.class);
+				super.subscribeInteraction((Class<? extends InteractionClass>) WASSERRVMessage.class);
+
 			} catch (Exception e) {
 
 				e.printStackTrace();
@@ -192,6 +200,9 @@ public class ERRVFederate extends SEEAbstractFederate implements Observer {
 					delivering += 10.0;
 				} else {
 					System.out.println("[ERRV] Object pickup complete.");
+					int index = new Random().nextInt(lunarRover.sendParts().size());
+					Parts part = lunarRover.sendParts().get(index);
+					sendMessage("ERRV", "WASS", "PART", part.toString());
 					delivering = 0.0;
 					lunarRover.setAvailability(true);
 					this.objectToDeliver = null;
@@ -231,6 +242,9 @@ public class ERRVFederate extends SEEAbstractFederate implements Observer {
 
 			this.listOfObjectToDeliver.add(((EmergencyRequest) arg1).getRequest());
 			// }
+		} else if (arg1 instanceof WASSERRVMessage) {
+			WASSERRVMessage msg = (WASSERRVMessage) arg1;
+			System.out.println("[ERRV] Received message from WASS:" + msg.getMessageType() + " :\n" + msg.getContent());
 		} else {
 			System.out.println("unknown type");
 		}
@@ -239,5 +253,19 @@ public class ERRVFederate extends SEEAbstractFederate implements Observer {
 
 	public void getPosition() {
 		System.out.println("The position of ERRV  is : " + this.lunarRover.getPosition());
+	}
+
+	private void sendMessage(String sender, String receiver, String type, String content) {
+		this.message.setSender(sender);
+		this.message.setReceiver(receiver);
+		this.message.setMessageType(type);
+		this.message.setContent(content);
+
+		try {
+			super.updateInteraction(this.message);
+			System.out.println("[ERRV] Sent message to " + receiver + ":\n" + content);
+		} catch (Exception e) {
+			System.out.println("[ERRV] Failed to send message: " + e.getMessage());
+		}
 	}
 }
