@@ -30,15 +30,41 @@
             <interactionClass>
                 <name>EmergencyRequest</name>
                 <sharing>PublishSubscribe</sharing>
-		<transportation>HLAreliable</transportation>
+                <transportation>HLAreliable</transportation>
                 <order>Receive</order>
-		<parameter>
+                <parameter>
                         <name>Request</name>
-                        <type>HLAunicodeString</type>
+                        <dataType>HLAunicodeString</dataType>
                         <semantics>Details of the machine sending the request in the form:name,x,y,z,weight (comma separated, see Objecttoget class)</semantics>
                 </parameter>
-                <semantics></semantics>
             </interactionClass>
+            <interactionClass>
+				<name>WASSERRVMessage</name>
+				<sharing>PublishSubscribe</sharing>
+				<transportation>HLAreliable</transportation>
+				<order>Receive</order>
+				<semantics>General communication between federates</semantics>
+				<parameter>
+					<name>Sender</name>
+					<dataType>HLAunicodeString</dataType>
+					<semantics>Federate sending the message</semantics>
+				</parameter>
+				<parameter>
+					<name>Receiver</name>
+					<dataType>HLAunicodeString</dataType>
+					<semantics>Federate receiving the message</semantics>
+				</parameter>
+				<parameter>
+					<name>MessageType</name>
+					<dataType>HLAunicodeString</dataType>
+					<semantics>Message type identifier</semantics>
+				</parameter>
+				<parameter>
+					<name>Content</name>
+					<dataType>HLAunicodeString</dataType>
+					<semantics>Main content of the message</semantics>
+				</parameter>
+			</interactionClass>
         </interactionClass>
     </interactions>
     <dataTypes>
