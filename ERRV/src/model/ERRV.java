@@ -3,6 +3,7 @@ package model;
 import skf.coder.HLAunicodeStringCoder;
 import skf.model.object.annotations.Attribute;
 import skf.model.object.annotations.ObjectClass;
+import java.util.ArrayList;
 
 @ObjectClass(name = "PhysicalInterface.ERRV")
 public class ERRV {
@@ -36,6 +37,16 @@ public class ERRV {
 		this.velocity = 10;
 		this.energyLevel = energyLevel;
 		this.arm = arm;
+	}
+
+	public ArrayList<Parts> sendParts() {
+		ArrayList<Parts> parts = new ArrayList<>();
+		parts.add(new Parts("Body", 100));
+		parts.add(new Parts("Wheel", 50));
+		parts.add(new Parts("Board", 50));
+		parts.add(new Parts("Battery", 100));
+
+		return parts;
 	}
 
 	public String getName() {
@@ -93,4 +104,5 @@ public class ERRV {
 	public void setArm(Arm arm) {
 		this.arm = arm;
 	}
+
 }
